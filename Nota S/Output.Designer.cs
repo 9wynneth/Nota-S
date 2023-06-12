@@ -50,7 +50,7 @@ namespace Nota_S
             this.label13 = new System.Windows.Forms.Label();
             this.lbl_hslNotes = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.btn_SS = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_output)).BeginInit();
             this.SuspendLayout();
             // 
@@ -170,13 +170,13 @@ namespace Nota_S
             this.dGV_output.Name = "dGV_output";
             this.dGV_output.RowHeadersWidth = 62;
             this.dGV_output.RowTemplate.Height = 28;
-            this.dGV_output.Size = new System.Drawing.Size(590, 337);
+            this.dGV_output.Size = new System.Drawing.Size(590, 394);
             this.dGV_output.TabIndex = 12;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(393, 531);
+            this.label9.Location = new System.Drawing.Point(393, 585);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(89, 20);
             this.label9.TabIndex = 13;
@@ -185,7 +185,7 @@ namespace Nota_S
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(76, 598);
+            this.label10.Location = new System.Drawing.Point(76, 652);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(106, 20);
             this.label10.TabIndex = 15;
@@ -194,7 +194,7 @@ namespace Nota_S
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(393, 598);
+            this.label11.Location = new System.Drawing.Point(393, 652);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(103, 20);
             this.label11.TabIndex = 16;
@@ -221,7 +221,7 @@ namespace Nota_S
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(26, 523);
+            this.label13.Location = new System.Drawing.Point(26, 577);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(56, 20);
             this.label13.TabIndex = 19;
@@ -230,7 +230,7 @@ namespace Nota_S
             // lbl_hslNotes
             // 
             this.lbl_hslNotes.AutoSize = true;
-            this.lbl_hslNotes.Location = new System.Drawing.Point(83, 522);
+            this.lbl_hslNotes.Location = new System.Drawing.Point(83, 576);
             this.lbl_hslNotes.Name = "lbl_hslNotes";
             this.lbl_hslNotes.Size = new System.Drawing.Size(60, 20);
             this.lbl_hslNotes.TabIndex = 20;
@@ -240,28 +240,28 @@ namespace Nota_S
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(484, 531);
+            this.label14.Location = new System.Drawing.Point(484, 585);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(67, 20);
             this.label14.TabIndex = 21;
             this.label14.Text = "label14";
             // 
-            // btn_SS
+            // button1
             // 
-            this.btn_SS.Location = new System.Drawing.Point(26, 19);
-            this.btn_SS.Name = "btn_SS";
-            this.btn_SS.Size = new System.Drawing.Size(75, 23);
-            this.btn_SS.TabIndex = 22;
-            this.btn_SS.Text = "SS";
-            this.btn_SS.UseVisualStyleBackColor = true;
-            this.btn_SS.Click += new System.EventHandler(this.btn_SS_Click);
+            this.button1.Location = new System.Drawing.Point(12, 16);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 50);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "SS";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form_Output
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 700);
-            this.Controls.Add(this.btn_SS);
+            this.ClientSize = new System.Drawing.Size(628, 726);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.lbl_hslNotes);
             this.Controls.Add(this.label13);
@@ -315,6 +315,6 @@ namespace Nota_S
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lbl_hslNotes;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button btn_SS;
+        private System.Windows.Forms.Button button1;
     }
 }

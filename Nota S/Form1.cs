@@ -14,6 +14,7 @@ namespace Nota_S
         public static string tanggalNota;
         public static string merk;
         public static string note;
+        public static string noteDataTable;
         public static bool cekTomat = false;
         public static decimal jumlahTomat;
         public static bool cekDosTomat = false;
@@ -22,6 +23,8 @@ namespace Nota_S
         public static decimal jumlahSambal;
         public static bool cekDosSambal = false;
         public static decimal jumlahDosSambal;
+        public static bool cekMerica = false;
+        public static decimal jumlahMerica;
         public bool tanggalGanti = false;
 
         private void Form1_Load(object sender, EventArgs e)
@@ -63,6 +66,13 @@ namespace Nota_S
             labelSambalAtas.Visible = false;
             numUpDown_jmlhSambal.Visible = false;
             checkBox_dosSambal.Visible = false;
+        }
+
+        public void hideMericaatas()
+        {
+            label_mericaAtas.Visible = false;
+            numUpdown_jmlhMerica.Visible = false;
+
         }
 
         public void hideDosSambal()
@@ -169,6 +179,14 @@ namespace Nota_S
                         {
                             MessageBox.Show("Jumlah tomat masih 0! Jika memang benar, mohon jangan mencentang pilihan tomat!");
                         }
+                        else if (jumlahSambal==0 && checkBox_sambal.Checked ==true)
+                        {
+                            MessageBox.Show("Jumlah sambal masih 0! Jika memang benar, mohon jangan mencentang pilihan tomat!");
+                        }
+                        else if (jumlahMerica == 0 && checkBox_Merica.Checked == true)
+                        {
+                            MessageBox.Show("Jumlah merica masih 0! Jika memang benar, mohon jangan mencentang pilihan tomat!");
+                        }
                         else
                         {
                             Form_Output output2 = new Form_Output();
@@ -181,6 +199,14 @@ namespace Nota_S
                 else if (jumlahTomat == 0 && checkBox_tomat.Checked == true)
                 {
                     MessageBox.Show("Jumlah tomat masih 0! Jika memang benar, mohon jangan mencentang pilihan tomat!");
+                }
+                else if (jumlahSambal == 0 && checkBox_sambal.Checked == true)
+                {
+                    MessageBox.Show("Jumlah sambal masih 0! Jika memang benar, mohon jangan mencentang pilihan tomat!");
+                }
+                else if (jumlahMerica == 0 && checkBox_Merica.Checked == true)
+                {
+                    MessageBox.Show("Jumlah merica masih 0! Jika memang benar, mohon jangan mencentang pilihan tomat!");
                 }
                 else
                 {
@@ -215,6 +241,32 @@ namespace Nota_S
         {
             cekDosSambal = true;
             jumlahDosSambal = numUpDown_dosSambal.Value;
+        }
+
+        private void numUpdown_jmlhMerica_ValueChanged(object sender, EventArgs e)
+        {
+            cekMerica = true;
+            jumlahMerica = numUpdown_jmlhMerica.Value;
+        }
+
+        private void checkBox_Merica_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_Merica.Checked == true)
+            {
+                label_mericaAtas.Visible = true;
+                numUpdown_jmlhMerica.Visible = true;
+                cekMerica = true;
+            }
+            else
+            {
+                cekMerica = false;
+                hideMericaatas();
+            }
+        }
+
+        private void textBox_noteDataTable_TextChanged(object sender, EventArgs e)
+        {
+            noteDataTable = textBox_noteDataTable.Text;
         }
     }
 }

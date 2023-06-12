@@ -52,11 +52,17 @@ namespace Nota_S
             this.label4 = new System.Windows.Forms.Label();
             this.textBox_Note = new System.Windows.Forms.TextBox();
             this.errorProviderNoNota = new System.Windows.Forms.ErrorProvider(this.components);
+            this.checkBox_Merica = new System.Windows.Forms.CheckBox();
+            this.label_mericaAtas = new System.Windows.Forms.Label();
+            this.numUpdown_jmlhMerica = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox_noteDataTable = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_jmlhTomat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_jmlhSambal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_dosSambal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_dosTomat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderNoNota)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpdown_jmlhMerica)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -262,7 +268,7 @@ namespace Nota_S
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(53, 416);
+            this.label4.Location = new System.Drawing.Point(53, 459);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 20);
             this.label4.TabIndex = 22;
@@ -270,9 +276,9 @@ namespace Nota_S
             // 
             // textBox_Note
             // 
-            this.textBox_Note.Location = new System.Drawing.Point(108, 413);
+            this.textBox_Note.Location = new System.Drawing.Point(108, 456);
             this.textBox_Note.Name = "textBox_Note";
-            this.textBox_Note.Size = new System.Drawing.Size(206, 26);
+            this.textBox_Note.Size = new System.Drawing.Size(333, 26);
             this.textBox_Note.TabIndex = 23;
             this.textBox_Note.TextChanged += new System.EventHandler(this.textBox_Note_TextChanged);
             // 
@@ -280,11 +286,68 @@ namespace Nota_S
             // 
             this.errorProviderNoNota.ContainerControl = this;
             // 
+            // checkBox_Merica
+            // 
+            this.checkBox_Merica.AutoSize = true;
+            this.checkBox_Merica.Location = new System.Drawing.Point(359, 175);
+            this.checkBox_Merica.Name = "checkBox_Merica";
+            this.checkBox_Merica.Size = new System.Drawing.Size(82, 24);
+            this.checkBox_Merica.TabIndex = 24;
+            this.checkBox_Merica.Text = "Merica";
+            this.checkBox_Merica.UseVisualStyleBackColor = true;
+            this.checkBox_Merica.CheckedChanged += new System.EventHandler(this.checkBox_Merica_CheckedChanged);
+            // 
+            // label_mericaAtas
+            // 
+            this.label_mericaAtas.AutoSize = true;
+            this.label_mericaAtas.Location = new System.Drawing.Point(355, 218);
+            this.label_mericaAtas.Name = "label_mericaAtas";
+            this.label_mericaAtas.Size = new System.Drawing.Size(59, 20);
+            this.label_mericaAtas.TabIndex = 25;
+            this.label_mericaAtas.Text = "jumlah:";
+            this.label_mericaAtas.Visible = false;
+            // 
+            // numUpdown_jmlhMerica
+            // 
+            this.numUpdown_jmlhMerica.Location = new System.Drawing.Point(359, 245);
+            this.numUpdown_jmlhMerica.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numUpdown_jmlhMerica.Name = "numUpdown_jmlhMerica";
+            this.numUpdown_jmlhMerica.Size = new System.Drawing.Size(53, 26);
+            this.numUpdown_jmlhMerica.TabIndex = 26;
+            this.numUpdown_jmlhMerica.Visible = false;
+            this.numUpdown_jmlhMerica.ValueChanged += new System.EventHandler(this.numUpdown_jmlhMerica_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(53, 418);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(128, 20);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "Note (datatable):";
+            // 
+            // textBox_noteDataTable
+            // 
+            this.textBox_noteDataTable.Location = new System.Drawing.Point(187, 415);
+            this.textBox_noteDataTable.Name = "textBox_noteDataTable";
+            this.textBox_noteDataTable.Size = new System.Drawing.Size(254, 26);
+            this.textBox_noteDataTable.TabIndex = 28;
+            this.textBox_noteDataTable.TextChanged += new System.EventHandler(this.textBox_noteDataTable_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 488);
+            this.Controls.Add(this.textBox_noteDataTable);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.numUpdown_jmlhMerica);
+            this.Controls.Add(this.label_mericaAtas);
+            this.Controls.Add(this.checkBox_Merica);
             this.Controls.Add(this.textBox_Note);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.numUpDown_dosSambal);
@@ -314,6 +377,7 @@ namespace Nota_S
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_dosSambal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_dosTomat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderNoNota)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpdown_jmlhMerica)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,6 +407,11 @@ namespace Nota_S
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox_Note;
         private System.Windows.Forms.ErrorProvider errorProviderNoNota;
+        private System.Windows.Forms.TextBox textBox_noteDataTable;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown numUpdown_jmlhMerica;
+        private System.Windows.Forms.Label label_mericaAtas;
+        private System.Windows.Forms.CheckBox checkBox_Merica;
     }
 }
 

@@ -12,8 +12,7 @@ namespace Nota_S
 {
     public partial class Form_Output : Form
     {
-        private static Bitmap bmpScreenshot;
-        private static Graphics gfxScreenshot;
+
        
         public Form_Output()
         {
@@ -51,6 +50,22 @@ namespace Nota_S
             dtIsi.Rows.Add(rowSambal);
         }
 
+        private void merica()
+        {
+            DataRow rowMerica = dtIsi.NewRow();
+            rowMerica["BANYAKNYA"] = $"{Form1.jumlahMerica} dos";
+            rowMerica["NAMA BARANG"] = "Merica Siliwangi";
+            rowMerica["HARGA"] = 235000;
+            rowMerica["JUMLAH"] = Form1.jumlahMerica * 235000;
+            dtIsi.Rows.Add(rowMerica);
+        }
+        private void noteData()
+        {
+            DataRow rowNoteData = dtIsi.NewRow();
+            rowNoteData["NAMA BARANG"] = Form1.noteDataTable;
+            dtIsi.Rows.Add(rowNoteData);
+        }
+
         private void dosSambal()
         {
             DataRow rowDos = dtIsi.NewRow();
@@ -71,7 +86,7 @@ namespace Nota_S
 
         private void Output_Load(object sender, EventArgs e)
         {
-            btn_SS.Visible = false;
+            button1.Visible = false;
             dtIsi.Columns.Add("BANYAKNYA", typeof(String));
             dtIsi.Columns.Add("NAMA BARANG", typeof(String));
             dtIsi.Columns.Add("HARGA", typeof(System.Int32));
@@ -107,6 +122,10 @@ namespace Nota_S
                 {
                     sambal();
                 }
+                if (Form1.cekMerica == true)
+                {
+                    merica();
+                }
                 if (Form1.cekDosTomat == true && Form1.cekTomat==true)
                 {
                     dosTomat();
@@ -130,6 +149,10 @@ namespace Nota_S
                 {
                     tomat();
                 }
+                if (Form1.cekMerica == true)
+                {
+                    merica();
+                }
                 if (Form1.cekDosTomat == true && Form1.cekTomat==true)
                 {
                     dosTomat();
@@ -139,10 +162,45 @@ namespace Nota_S
                     dosSambal();
                 }
             }
+            else if (Form1.cekMerica == true)
+            {
+                merica();
+                if (Form1.cekTomat == true)
+                {
+                    tomat();
+                }
+                if (Form1.cekSambal == true)
+                {
+                    sambal();
+                }
+                if (Form1.cekDosTomat == true && Form1.cekTomat == true)
+                {
+                    dosTomat();
+                }
+                if (Form1.cekDosSambal == true && Form1.cekSambal == true)
+                {
+                    dosSambal();
+                }
+            }
+            noteData();
 
+            dGV_output.EnableHeadersVisualStyles = false;
             dGV_output.DataSource = dtIsi;
+
+            dGV_output.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dGV_output.RowsDefaultCellStyle.BackColor = Color.White;
+            dGV_output.RowsDefaultCellStyle.ForeColor = Color.Black;
             dGV_output.DefaultCellStyle.SelectionBackColor = Color.White;
             dGV_output.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dGV_output.BackgroundColor = Color.White;
+
+            foreach (DataGridViewColumn column in dGV_output.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }
+
+            dGV_output.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
             object sumObject;
             sumObject = dtIsi.Compute("Sum(JUMLAH)", string.Empty);
@@ -152,35 +210,50 @@ namespace Nota_S
          
             label14.Text = storeangka.ToString("#,##0.00");
 
-           
-            /* Bitmap bitmap = new Bitmap(this.Width, this.Height);
-             DrawToBitmap(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height));
-             bitmap.Save("c:\\NewTest.jpeg", ImageFormat.Jpeg);
-             MessageBox.Show("Screenshot completed");
-          */
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private bool isButtonVisible = true;
+        private void button1_Click(object sender, EventArgs e)
         {
-            var frm = Form.ActiveForm;
-            using (var bmp = new Bitmap(frm.Width, frm.Height))
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                frm.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
-                bmp.Save(@"c:\temp\screenshot.png");
-            }
-        }
+                saveFileDialog.Filter = "PNG Image|*.png";
+                saveFileDialog.Title = "Save Screenshot";
+                saveFileDialog.FileName = "screenshot.png";
 
-        private void btn_SS_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-      
-            var frm = Form.ActiveForm;
-            using (var bmp = new Bitmap(frm.Width, frm.Height))
-            {
-                frm.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
-                bmp.Save(@"c:\temp\screenshot.png");
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Hide the button
+                    isButtonVisible = button1.Visible;
+                    button1.Visible = false;
+
+                    // Capture the screenshot of the form
+                    using (Bitmap formScreenshot = new Bitmap(this.Width, this.Height))
+                    {
+                        this.DrawToBitmap(formScreenshot, new Rectangle(0, 0, formScreenshot.Width, formScreenshot.Height));
+
+                        // Create a separate bitmap to render the labels
+                        using (Bitmap labelsScreenshot = new Bitmap(lbl_hslNoNota.Width, lbl_hslNoNota.Height))
+                        {
+                            lbl_hslNoNota.DrawToBitmap(labelsScreenshot, new Rectangle(Point.Empty, labelsScreenshot.Size));
+
+                            // Combine the form screenshot and labels screenshot
+                            using (Bitmap finalScreenshot = new Bitmap(formScreenshot.Width, formScreenshot.Height))
+                            using (Graphics graphics = Graphics.FromImage(finalScreenshot))
+                            {
+                                graphics.DrawImage(formScreenshot, Point.Empty);
+                                graphics.DrawImage(labelsScreenshot, lbl_hslNoNota.Location);
+
+                                // Save the final screenshot
+                                finalScreenshot.Save(saveFileDialog.FileName, ImageFormat.Png);
+                            }
+                        }
+                    }
+
+                    // Restore the button visibility
+                    button1.Visible = isButtonVisible;
+                }
             }
-            this.Visible = true;
         }
     }
 }
