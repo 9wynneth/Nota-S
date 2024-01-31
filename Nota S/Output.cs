@@ -86,7 +86,7 @@ namespace Nota_S
 
         private void Output_Load(object sender, EventArgs e)
         {
-            button1.Visible = false;
+            //button1.Visible = false;
             dtIsi.Columns.Add("BANYAKNYA", typeof(String));
             dtIsi.Columns.Add("NAMA BARANG", typeof(String));
             dtIsi.Columns.Add("HARGA", typeof(System.Int32));
@@ -213,7 +213,7 @@ namespace Nota_S
         }
 
         private bool isButtonVisible = true;
-        private void button1_Click(object sender, EventArgs e)
+/*        private void button1_Click(object sender, EventArgs e)
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
@@ -227,33 +227,19 @@ namespace Nota_S
                     isButtonVisible = button1.Visible;
                     button1.Visible = false;
 
-                    // Capture the screenshot of the form
-                    using (Bitmap formScreenshot = new Bitmap(this.Width, this.Height))
-                    {
-                        this.DrawToBitmap(formScreenshot, new Rectangle(0, 0, formScreenshot.Width, formScreenshot.Height));
+                    // Create a bitmap with the form's size
+                    Bitmap screenshot = new Bitmap(this.Width, this.Height);
 
-                        // Create a separate bitmap to render the labels
-                        using (Bitmap labelsScreenshot = new Bitmap(lbl_hslNoNota.Width, lbl_hslNoNota.Height))
-                        {
-                            lbl_hslNoNota.DrawToBitmap(labelsScreenshot, new Rectangle(Point.Empty, labelsScreenshot.Size));
+                    // Draw the form and its controls onto the bitmap
+                    this.DrawToBitmap(screenshot, new Rectangle(0, 0, screenshot.Width, screenshot.Height));
 
-                            // Combine the form screenshot and labels screenshot
-                            using (Bitmap finalScreenshot = new Bitmap(formScreenshot.Width, formScreenshot.Height))
-                            using (Graphics graphics = Graphics.FromImage(finalScreenshot))
-                            {
-                                graphics.DrawImage(formScreenshot, Point.Empty);
-                                graphics.DrawImage(labelsScreenshot, lbl_hslNoNota.Location);
-
-                                // Save the final screenshot
-                                finalScreenshot.Save(saveFileDialog.FileName, ImageFormat.Png);
-                            }
-                        }
-                    }
+                    // Save the screenshot
+                    screenshot.Save(saveFileDialog.FileName, ImageFormat.Png);
 
                     // Restore the button visibility
                     button1.Visible = isButtonVisible;
                 }
             }
-        }
+        }*/
     }
 }

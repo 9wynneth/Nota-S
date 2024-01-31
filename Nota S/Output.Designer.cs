@@ -50,7 +50,8 @@ namespace Nota_S
             this.label13 = new System.Windows.Forms.Label();
             this.lbl_hslNotes = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_output)).BeginInit();
             this.SuspendLayout();
             // 
@@ -246,22 +247,31 @@ namespace Nota_S
             this.label14.TabIndex = 21;
             this.label14.Text = "label14";
             // 
-            // button1
+            // label15
             // 
-            this.button1.Location = new System.Drawing.Point(12, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 50);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "SS";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(22, 39);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(287, 20);
+            this.label15.TabIndex = 22;
+            this.label15.Text = "Bca 258 130 5551 Ie Hansen Isviandhy";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(22, 19);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(127, 20);
+            this.label16.TabIndex = 23;
+            this.label16.Text = "Harap TF ke rek:";
             // 
             // Form_Output
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 726);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(628, 753);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.lbl_hslNotes);
             this.Controls.Add(this.label13);
@@ -315,6 +325,7 @@ namespace Nota_S
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lbl_hslNotes;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
     }
 }
